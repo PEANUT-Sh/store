@@ -1,6 +1,20 @@
 // アプリケーション作成用のモジュールを読み込み
-const { app, BrowserWindow } = require("electron");
+const { app, Menu, BrowserWindow } = require("electron");
 const path = require("path");
+
+const template = Menu.buildFromTemplate([
+  {
+    label: "Pi-Store",
+    submenu: [
+      { role:'about', label:'情報' },
+      { role:'close', label:'閉じる'}
+    ]
+  }
+]);
+
+// メニューを適用する
+Menu.setApplicationMenu(template);
+
 
 // メインウィンドウ
 let mainWindow;
