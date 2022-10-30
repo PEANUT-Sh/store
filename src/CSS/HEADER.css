@@ -24,3 +24,12 @@ nav{
     padding-top: 20px;
     bottom: 0;
 }
+a{
+    color: black;
+}
+a:visited{
+    color: black;
+}
+.icon{
+    text-decoration:none;
+}

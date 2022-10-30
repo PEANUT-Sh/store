@@ -1,39 +1,35 @@
-// アプリケーション作成用のモジュールを読み込み
-const { app, Menu, BrowserWindow } = require("electron");
-const path = require("path");
+const { app, Menu, BrowserWindow } = require('electron');
 
+//------------------------------------
+// メニュー
+//------------------------------------
+// メニューを準備する
 const template = Menu.buildFromTemplate([
-  {
-    label: "Pi-Store",
-    submenu: [
-      { role:'about', label:'情報' },
-      { role:'close', label:'閉じる'}
-    ]
-  }
+    {
+      label: "Pi-Store",
+      submenu: [
+        { role:'reload', label:'再読込' }
+      ]
+    },
 ]);
 
 // メニューを適用する
 Menu.setApplicationMenu(template);
 
-
-// メインウィンドウ
-let mainWindow;
-
-const createWindow = () => {
-  // メインウィンドウを作成します
-  mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+//------------------------------------
+// ウィンドウ
+//------------------------------------
+// 初期化が終了したらウィンドウを新規に作成する
+app.whenReady().then(()=>{
+  const win = new BrowserWindow({
+    width: 1024,
+    height: 800,
     webPreferences: {
-      // プリロードスクリプトは、レンダラープロセスが読み込まれる前に実行され、
-      // レンダラーのグローバル（window や document など）と Node.js 環境の両方にアクセスできます。
-      preload: path.join(__dirname, "preload.js"),
-    },
-  });
-
-  // メインウィンドウに表示するURLを指定します
-  // （今回はmain.jsと同じディレクトリのindex.html）
-  mainWindow.loadFile("index.html");
+      nodeIntegration: true,
+    }
+  })
+  win.loadFile('index.html')
+})
 
 
 
@@ -41,7 +37,6 @@ const createWindow = () => {
   mainWindow.on("closed", () => {
     mainWindow = null;
   });
-};
 
 //  初期化が完了した時の処理
 app.whenReady().then(() => {
