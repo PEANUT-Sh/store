@@ -1,0 +1,24 @@
+{
+  "name": "store",
+  "version": "1.0.0",
+  "description": "store appt for raspberry pi4",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron .",
+    "pack": "electron-packager ./ AppName --platform=linux --arch=armv7l"
+ },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PEANUT-Sh/store.git"
+  },
+  "keywords": [
+    "store",
+    "app"
+  ],
+  "author": "GitHub",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PEANUT-Sh/store/issues"
+  },
+  "homepage": "https://github.com/PEANUT-Sh/store#readme"
+}
